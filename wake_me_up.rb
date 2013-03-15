@@ -14,10 +14,11 @@ class WakeMeUp
       if Time.now >= @alarm_time
         its_time
 	@run = false
+      else
+        sleep(@alarm_time-Time.now)
       end
     end
   end
 end
-puts ARGV[0].split(',').map{ |data| data.to_i }.inspect
-@wake_me_up = WakeMeUp.new Time.new(ARGV[0].split(',').map{|data| data.to_i}) #2013,03,15,6
+@wake_me_up = WakeMeUp.new Time.new 2013,03,15,6
 @wake_me_up.check_time
